@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {motion} from 'framer-motion'
+import {motion, useCycle} from 'framer-motion'
 
 
 const loaderVariants = {
@@ -19,18 +19,41 @@ const loaderVariants = {
                 ease: "easeOut"
             }
         }
+    },
+
+    animationTwo: {
+        y: [0, -40],
+        x: 0,
+
+        transition: {
+            y: {
+                yoyo: Infinity,
+                duration: .25,
+                ease: "easeOut"
+            }
+        }
     }
 }
 
 
 const Loader = () => {
+  const [animation, cycleAnimation] = useCycle("animationOne", "animationTwo");
+
   return (
+    <>
     <motion.div className="loader"
         variants={loaderVariants}
-        animate="animationOne"
+        animate={animation}
     >
 
     </motion.div>
+
+    <div className="Cycler" onClick={() => cycleAnimation()}>
+        Cycle Loader
+    </div>
+    </>
+
+
   )
 }
 

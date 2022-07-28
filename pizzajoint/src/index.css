@@ -47,6 +47,7 @@ button{
   cursor: pointer;
 }
 
+
 /* header */
 header{
   display: flex;
@@ -142,4 +143,8 @@ li span.active::before{
   margin: 40px auto;
   border-radius: 50%;
   background-color: white;
+}
+
+.Cycler {
+  cursor: pointer;
 }
